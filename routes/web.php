@@ -20,5 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/klant', [App\Http\Controllers\KlantController::class, 'index'])->name('klant');
-Route::get('/leverancier', [App\Http\Controllers\LeverancierController::class, 'index'])->name('leverancier');
+Route::resource('klant', 'App\Http\Controllers\KlantController');
+Route::resource('leverancier', 'App\Http\Controllers\LeverancierController');

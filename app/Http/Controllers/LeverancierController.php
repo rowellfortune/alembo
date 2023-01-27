@@ -15,7 +15,7 @@ class LeverancierController extends Controller
      */
     public function index()
     {
-        return view('leverancier');
+        return view('/leverancier/index');
     }
 
     /**
@@ -25,7 +25,7 @@ class LeverancierController extends Controller
      */
     public function create()
     {
-        //
+        return view('/leverancier/create');
     }
 
     /**

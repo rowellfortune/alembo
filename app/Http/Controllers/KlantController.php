@@ -15,7 +15,9 @@ class KlantController extends Controller
      */
     public function index()
     {
-        return view('klant');
+        // return view('/klant');
+        $klant = Klant::all();
+        return view('/klant/index', compact('klant'));
     }
 
     /**
@@ -25,7 +27,8 @@ class KlantController extends Controller
      */
     public function create()
     {
-        //
+      $klant = Klant::all();
+      return view('/klant/create', compact('klant'));
     }
 
     /**
