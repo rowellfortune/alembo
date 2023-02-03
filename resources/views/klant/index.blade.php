@@ -28,9 +28,10 @@
                         <th>Geslacht</th>
                         <th>Adres #</th>
                         <th>District</th>
-                        <th>Telefoonnummer</th>
+                        <th>Tel</th>
                         <th>Email</th>
                         <th>View</th>
+                        <th>Status</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -83,7 +84,7 @@
                 </thead>
                 </tfoot>
             </table>
-
+            {!! $data->links() !!}
         </div>
     </div>
 

@@ -98,7 +98,8 @@ class LeverancierController extends Controller
         'district' => 'required',
         'directeur'=> 'required',
         'telefoonnummer'=> 'required',
-        'website' => 'required'
+        'website' => 'required',
+        'is_published' => 'required'
       ]);
 
 
@@ -110,6 +111,7 @@ class LeverancierController extends Controller
       $leverancier->directeur       = $request->directeur;
       $leverancier->telefoonnummer  = $request->telefoonnummer;
       $leverancier->website         = $request->website;
+      $leverancier->is_published         = $request->is_published;
       $leverancier->save();
 
       return redirect()->route('leverancier.index')->with('success', 'Leverancier Data has been updated successfully.');

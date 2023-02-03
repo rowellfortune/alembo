@@ -21,6 +21,7 @@ return new class extends Migration
           $table->string('directeur');
           $table->string('telefoonnummer');
           $table->string('website');
+          $table->enum('is_published', ['published', 'draft']);
           $table->timestamps();
       });
     }

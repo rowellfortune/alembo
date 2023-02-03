@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Huisnummer</label>
-                                    <input type="text" name="huisnummer" class="form-control" id="exampleInputEmail1"
+                                    <input type="number" name="huisnummer" class="form-control" id="exampleInputEmail1"
                                         placeholder="Huisnummer">
                                 </div>
                             </div>

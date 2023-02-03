@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Leverancier;
+use App\Models\Klant;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $klant = Klant::where('is_published', '=', 'published')->count();
+        $leverancier = Leverancier::where('is_published', '=', 'published')->count();
+        return view('home', compact('klant', 'leverancier'));
     }
 }

@@ -89,9 +89,18 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="exampleInputDistrict">Status</label>
+                            <select class="form-control select2" name="is_published" style="width: 100%;">
+                                <option value="published">Publish</option>
+                                <option value="draft">Draft</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <a href="{{ route('klant.index') }}" class="btn btn-danger margin">Cancel</a>
+                        <a href="{{ route('leverancier.index') }}" class="btn btn-danger margin">Cancel</a>
                     </div>
                 </div>
             </form>

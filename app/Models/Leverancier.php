@@ -15,5 +15,6 @@ class Leverancier extends Model
       'directeur',
       'telefoonnummer',
       'website',
+      'is_published'
   ];
 }

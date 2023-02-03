@@ -28,6 +28,7 @@
                         <th>Directeur</th>
                         <th>Telefoonnummer</th>
                         <th>Website</th>
+                        <th>Status</th>
                         <th>View</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -44,6 +45,7 @@
                         <td>{{ $row->directeur }}</td>
                         <td>{{ $row->telefoonnummer }}</td>
                         <td>{{ $row->website }}</td>
+                        <td>{{ $row->is_published }}</td>
                         <td>
                             <form method="post" action="{{ route('leverancier.destroy', $row->id) }}">
                                 @csrf
@@ -81,7 +83,7 @@
                 </thead>
                 </tfoot>
             </table>
-
+            {!! $data->links() !!}
         </div>
     </div>
 

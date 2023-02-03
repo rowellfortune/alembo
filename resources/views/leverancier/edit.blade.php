@@ -81,7 +81,16 @@
                                         value="{{ $leverancier->telefoonnummer }}">
                                 </div>
                             </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="exampleInputPublished">Status</label>
+                                    <select class="form-control" name="is_published" style="width: 100%;">
+                                        <option value="draft">Draft</option>
+                                        <option value="published">Publish</option>
+                                    </select>
 
+                                </div>
+                            </div>
 
 
                         </div>
@@ -98,6 +107,7 @@
         </div>
     </div>
 </div>
+
 
 
 

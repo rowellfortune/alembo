@@ -18,5 +18,6 @@ class Klant extends Model
       'district',
       'telefoonnummer',
       'email',
+      'is_published'
   ];
 }
