@@ -21,6 +21,8 @@
     'resources/js/app.js',
     'resources/plugins/jquery/jquery.min.js',
     'resources/plugins/bootstrap/js/bootstrap.bundle.min.js',
+    'resources/plugins/jquery-validation/jquery.validate.min.j',
+    'resources/plugins/jquery-validation/additional-methods.min.js',
     'resources/js/adminlte.min.js'
     ])
 </head>

@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreLeverancierRequest;
-use App\Http\Requests\UpdateLeverancierRequest;
+use Illuminate\Http\Request;
 use App\Models\Leverancier;
 
 class LeverancierController extends Controller
@@ -15,7 +14,10 @@ class LeverancierController extends Controller
      */
     public function index()
     {
-        return view('/leverancier/index');
+      $data = Leverancier::latest()->paginate(5);
+
+      return view('/leverancier/index', compact('data'))->with('i', (request()->input('page', 1) - 1) * 5);
+
     }
 
     /**
@@ -25,7 +27,7 @@ class LeverancierController extends Controller
      */
     public function create()
     {
-        return view('/leverancier/create');
+      return view('/leverancier/create');
     }
 
     /**
@@ -34,9 +36,29 @@ class LeverancierController extends Controller
      * @param  \App\Http\Requests\StoreLeverancierRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreLeverancierRequest $request)
+    public function store(Request $request)
     {
-        //
+      $request->validate([
+        'bedrijfsnaam' =>'required',
+        'adres'=> 'required',
+        'district' => 'required',
+        'directeur'=> 'required',
+        'telefoonnummer'=> 'required',
+        'website' => 'required'
+      ]);
+
+      $leverancier = new Leverancier();
+
+      $leverancier->bedrijfsnaam    = $request->bedrijfsnaam;
+      $leverancier->adres           = $request->adres;
+      $leverancier->district        = $request->district;
+      $leverancier->directeur       = $request->directeur;
+      $leverancier->telefoonnummer  = $request->telefoonnummer;
+      $leverancier->website         = $request->website;
+      $leverancier->save();
+
+      return redirect()->route('leverancier.index')->with('success', 'Leveranciers Added successfully.');
+
     }
 
     /**
@@ -47,7 +69,7 @@ class LeverancierController extends Controller
      */
     public function show(Leverancier $leverancier)
     {
-        //
+      return view('leverancier.show', compact('leverancier'));
     }
 
     /**
@@ -58,7 +80,7 @@ class LeverancierController extends Controller
      */
     public function edit(Leverancier $leverancier)
     {
-        //
+      return view('leverancier.edit', compact('leverancier'));
     }
 
     /**
@@ -68,9 +90,30 @@ class LeverancierController extends Controller
      * @param  \App\Models\Leverancier  $leverancier
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateLeverancierRequest $request, Leverancier $leverancier)
+    public function update(Request $request, Leverancier $leverancier)
     {
-        //
+      $request->validate([
+        'bedrijfsnaam' =>'required',
+        'adres'=> 'required',
+        'district' => 'required',
+        'directeur'=> 'required',
+        'telefoonnummer'=> 'required',
+        'website' => 'required'
+      ]);
+
+
+      $leverancier = Leverancier::find($request->hidden_id);
+
+      $leverancier->bedrijfsnaam    = $request->bedrijfsnaam;
+      $leverancier->adres           = $request->adres;
+      $leverancier->district        = $request->district;
+      $leverancier->directeur       = $request->directeur;
+      $leverancier->telefoonnummer  = $request->telefoonnummer;
+      $leverancier->website         = $request->website;
+      $leverancier->save();
+
+      return redirect()->route('leverancier.index')->with('success', 'Leverancier Data has been updated successfully.');
+
     }
 
     /**
@@ -81,6 +124,8 @@ class LeverancierController extends Controller
      */
     public function destroy(Leverancier $leverancier)
     {
-        //
+      $leverancier->delete();
+
+      return redirect()->route('leverancier.index')->with('success', 'Leverancier Data deleted successfully');
     }
 }

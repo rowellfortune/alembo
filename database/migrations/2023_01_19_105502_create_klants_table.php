@@ -17,7 +17,8 @@ return new class extends Migration
           $table->id();
           $table->string('voornaam');
           $table->string('achternaam');
-          $table->string('geslacht');
+          $table->enum('geslacht', ['Man', 'Vrauw']);
+          $table->string('adres');
           $table->string('huisnummer');
           $table->string('district');
           $table->string('telefoonnummer');

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\KlantController;
+use App\Http\Controllers\LeverancierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +23,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('klant', 'App\Http\Controllers\KlantController');
-Route::resource('leverancier', 'App\Http\Controllers\LeverancierController');
+Route::resource('klant', KlantController::class);
+Route::resource('leverancier', LeverancierController::class);

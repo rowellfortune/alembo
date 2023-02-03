@@ -15,8 +15,8 @@
 <div class="content">
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('klant.create') }}" class="btn float-sm-right btn-primary">Add +</a>
-            <h3 class="card-title">Quick Example</h3>
+            <a href="{{ route('klant.create') }}" class="btn btn-success btn-sm float-end">Add</a>
+
         </div>
         <div class="card-body">
 
@@ -26,35 +26,76 @@
                         <th>Voornaam</th>
                         <th>Achternaam</th>
                         <th>Geslacht</th>
-                        <th>Huisnummer</th>
+                        <th>Adres #</th>
                         <th>District</th>
                         <th>Telefoonnummer</th>
                         <th>Email</th>
+                        <th>View</th>
                         <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
 
+                    @if(count($data) > 0)
+
+                    @foreach($data as $row)
+
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ $row->voornaam }}</td>
+                        <td>{{ $row->achternaam }}</td>
+                        <td>{{ $row->geslacht }}</td>
+                        <td>{{ $row->adres }} {{ $row->huisnummer }}</td>
+
+                        <td>{{ $row->district }}</td>
+                        <td>{{ $row->telefoonnummer }}</td>
+                        <td>{{ $row->email }}</td>
                         <td>
-                            <a title="edit" href="#" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                            <form method="post" action="{{ route('klant.destroy', $row->id) }}">
+                                @csrf
+                                <a href="{{ route('klant.show', $row->id) }}" class="btn btn-primary btn-sm">View</a>
+                            </form>
+
+                        </td>
+                        <td>
+                            <form method="post" action="{{ route('klant.destroy', $row->id) }}">
+                                @csrf
+                                <a href="{{ route('klant.edit', $row->id) }}" class="btn btn-warning btn-sm">Edit</a>
+
+                            </form>
+
+                        </td>
+                        <td>
+                            <form method="post" action="{{ route('klant.destroy', $row->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" class="btn btn-danger btn-sm" value="Delete" />
+                            </form>
+
                         </td>
                     </tr>
 
+                    @endforeach
+
+                    @else
+                    <tr>
+                        <td colspan="5" class="text-center">No Data Found</td>
+                    </tr>
+                    @endif
                 </thead>
                 </tfoot>
             </table>
 
-            Er zijn geen Appartementen ingevoerd
-
-
         </div>
     </div>
+
+    @if($message = Session::get('success'))
+
+    <div class="alert alert-success">
+        {{ $message }}
+    </div>
+
+    @endif
+
+
 </div>
 <!-- /.content -->
 
