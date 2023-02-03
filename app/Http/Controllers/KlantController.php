@@ -60,6 +60,7 @@ class KlantController extends Controller
       $klant->district        =  $request->district;
       $klant->telefoonnummer  =  $request->telefoonnummer;
       $klant->email           =  $request->email;
+      $klant->is_published           =  $request->is_published;
       $klant->save();
 
       return redirect()->route('klant.index')->with('success', 'Klant successvol toegevoegd.');
@@ -105,7 +106,8 @@ class KlantController extends Controller
         'huisnummer' =>  'required',
         'district' =>  'required',
         'telefoonnummer' =>  'required|min:7|max:10',
-        'email' =>  'required|email'
+        'email' =>  'required|email',
+        'is_published' => 'required'
       ]);
 
     $klant = Klant::find($request->hidden_id);
@@ -118,6 +120,7 @@ class KlantController extends Controller
     $klant->district =  $request->district;
     $klant->telefoonnummer =  $request->telefoonnummer;
     $klant->email =  $request->email;
+    $klant->is_published  =  $request->is_published;
     $klant->save();
 
     return redirect()->route('klant.index')->with('success', 'Klant Data has been updated successfully');

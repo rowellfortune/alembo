@@ -49,15 +49,16 @@
                         <td>{{ $row->district }}</td>
                         <td>{{ $row->telefoonnummer }}</td>
                         <td>{{ $row->email }}</td>
+                        <td>{{ $row->is_published }}</td>
                         <td>
-                            <form method="post" action="{{ route('klant.destroy', $row->id) }}">
+                            <form method="post" action="{{ route('klant.show', $row->id) }}">
                                 @csrf
                                 <a href="{{ route('klant.show', $row->id) }}" class="btn btn-primary btn-sm">View</a>
                             </form>
 
                         </td>
                         <td>
-                            <form method="post" action="{{ route('klant.destroy', $row->id) }}">
+                            <form method="post" action="{{ route('klant.edit', $row->id) }}">
                                 @csrf
                                 <a href="{{ route('klant.edit', $row->id) }}" class="btn btn-warning btn-sm">Edit</a>
 

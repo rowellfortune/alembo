@@ -23,7 +23,7 @@ return new class extends Migration
           $table->string('district');
           $table->string('telefoonnummer');
           $table->string('email')->unique();
-          $table->enum('is_published', ['Y', 'N']);
+          $table->enum('is_published', ['published', 'draft']);
           $table->timestamps();
       });
     }

@@ -93,6 +93,15 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="exampleInputDistrict">Status</label>
+                                <select class="form-control select2" name="is_published" style="width: 100%;">
+                                    <option value="published">Publish</option>
+                                    <option value="draft">Draft</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-footer">
                         <div class="text-center">
