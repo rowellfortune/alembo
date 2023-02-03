@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\KlantController;
 use App\Http\Controllers\LeverancierController;
+use Illuminate\Auth\Middleware\Authorize;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('klant', KlantController::class);
-Route::resource('leverancier', LeverancierController::class);
+
+
+Route::resource('klant', KlantController::class)->middleware('auth');
+Route::resource('leverancier', LeverancierController::class)->middleware('auth');
